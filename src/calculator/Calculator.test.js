@@ -14,6 +14,10 @@ function Calc(firstNumber, secondNumber) {
   this.multiply = function () {
     return this.firstNumber * this.secondNumber;
   };
+
+  this.divide = function () {
+    return this.firstNumber / this.secondNumber;
+  };
 }
 
 const numberToAdd = new Calc(5, 10);
@@ -24,6 +28,9 @@ const numberToSubtractReversed = new Calc(10, 5);
 
 const numberToMulitply = new Calc(5, 10);
 const numberToMultiplyReversed = new Calc(10, 5);
+
+const numberToDivide = new Calc(200, 20);
+const numberToDivideReversed = new Calc(20, 200);
 
 //TESTS
 describe("check if the add method works as intended", () => {
@@ -57,14 +64,27 @@ describe("check if the subtract method works as intended", () => {
 });
 
 //Groopu your multiply tests
-describe('Check if the multiply method works as intended', () => {
-    test('Check if 5 and 10 is not 5', () => {
-        expect(numberToMulitply.multiply() === 5).toBeFalsy();
+describe("Check if the multiply method works as intended", () => {
+  test("Check if 5 and 10 is not 5", () => {
+    expect(numberToMulitply.multiply() === 5).toBeFalsy();
+  });
+  test("Check if it is 5 * 10 are 50", () => {
+    expect(numberToMulitply.multiply()).toEqual(50);
+  });
+  test("Check if 5 and 10 equal 50 with numbers switched around", () => {
+    expect(numberToMultiplyReversed.multiply() === 50).toBeTruthy();
+  });
+});
+
+//Group your divide tests 
+describe('Check if the divide method works as intended', () => {
+    test('Check if it is not -10', () => {
+        expect(numberToDivide.divide() === -10).toBeFalsy();
     })
-    test('Check if it is 5 * 10 are 50', () => {
-        expect(numberToMulitply.multiply()).toEqual(50);
+    test('Check if it is equal to 10', () => {
+        expect(numberToDivide.divide()).toEqual(10);
     })
-    test('Check if 5 and 10 equal 50 with numbers switched around', () => {
-        expect(numberToMultiplyReversed.multiply() === 50).toBeTruthy();
+    test('Check if it is not the same result with the numbers switched around', () => {
+        expect(numberToDivideReversed.divide() !== 10).toBeTruthy();
     })
 })

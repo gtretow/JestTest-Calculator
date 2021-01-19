@@ -48,6 +48,10 @@ export default class Calculator extends Component {
       //Use a return statement to return out of the function with state.
       //set towards num1 with num1 and num2 converted to numbers and multiplied from one another.
       return this.setState({ num1: +num1 * +num2, num2: "", operation: "" });
+    } else if (operation === "divide") {
+      //Use a return statement to return out of the function with state.
+      //set towrads num1 with num1 and num2 converted to numbers and divideed from one another.
+      return this.setState({ num1: +num1 / +num2, num2: "", operation: "" });
     }
   }
   add() {
@@ -67,6 +71,11 @@ export default class Calculator extends Component {
     this.setState({ operation: "multiply" });
   }
 
+  divide() {
+    //Set the operation to multiply so when you equal it will divide the first and second number.
+    this.setState({ operation: "divide" });
+  }
+
   render() {
     //Destruct values from state
     const { num1, num2, operation } = this.state;
@@ -78,7 +87,7 @@ export default class Calculator extends Component {
           <button onClick={(e) => this.clearInput(e)} className="btn">
             CE
           </button>
-          <button className="btn">% Remainder</button>
+          <button className="btn">%</button>
         </div>
         <div className="wrapper">
           <button
@@ -190,6 +199,9 @@ export default class Calculator extends Component {
 
           <button onClick={() => this.multiply()} className="btn">
             x
+          </button>
+          <button onClick={() => this.divide()} className="btn">
+            /
           </button>
         </div>
       </div>
