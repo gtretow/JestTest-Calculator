@@ -40,18 +40,15 @@ export default class Calculator extends Component {
     const { operation, num1, num2 } = this.state;
     //Have a if else statement to determine whetehr to add, divide, multiply, and subtract
     if (operation === "add") {
-      //USe a return statement to return out the function., use shorthand + to convert num1, and num2 to number so we can add them.
       return this.setState({ num1: +num1 + +num2, num2: "", operation: "" });
     } else if (operation === "subtract") {
       return this.setState({ num1: +num1 - +num2, num2: "", operation: "" });
     } else if (operation === "multiply") {
-      //Use a return statement to return out of the function with state.
-      //set towards num1 with num1 and num2 converted to numbers and multiplied from one another.
       return this.setState({ num1: +num1 * +num2, num2: "", operation: "" });
     } else if (operation === "divide") {
-      //Use a return statement to return out of the function with state.
-      //set towrads num1 with num1 and num2 converted to numbers and divideed from one another.
       return this.setState({ num1: +num1 / +num2, num2: "", operation: "" });
+    } else if (operation === "remainder") {
+      return this.setState({ num1: +num1 % +num2, num2: "", operation: "" });
     }
   }
   add() {
@@ -76,6 +73,11 @@ export default class Calculator extends Component {
     this.setState({ operation: "divide" });
   }
 
+  getRemainder() {
+    //Set the operation to remaidner so when you equal it will get remainder of the first and second number.
+    this.setState({ operation: "remainder" });
+  }
+
   render() {
     //Destruct values from state
     const { num1, num2, operation } = this.state;
@@ -87,7 +89,6 @@ export default class Calculator extends Component {
           <button onClick={(e) => this.clearInput(e)} className="btn">
             CE
           </button>
-          <button className="btn">%</button>
         </div>
         <div className="wrapper">
           <button
@@ -202,6 +203,9 @@ export default class Calculator extends Component {
           </button>
           <button onClick={() => this.divide()} className="btn">
             /
+          </button>
+          <button onClick={() => this.getRemainder()} className="btn">
+            %
           </button>
         </div>
       </div>

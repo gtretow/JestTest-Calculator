@@ -18,6 +18,16 @@ function Calc(firstNumber, secondNumber) {
   this.divide = function () {
     return this.firstNumber / this.secondNumber;
   };
+
+  this.remainder = function () {
+    return this.firstNumber % this.secondNumber;
+  };
+  this.getRemainder1 = function (a) {
+    return this.firstNumber % a;
+  };
+  this.getRemainder2 = function (a) {
+    return this.secondNumber % a;
+  };
 }
 
 const numberToAdd = new Calc(5, 10);
@@ -31,6 +41,9 @@ const numberToMultiplyReversed = new Calc(10, 5);
 
 const numberToDivide = new Calc(200, 20);
 const numberToDivideReversed = new Calc(20, 200);
+
+const numberToGetRemainderOf = new Calc(80, 5);
+const numberToGetRemainderOfReversed = new Calc(5, 10);
 
 //TESTS
 describe("check if the add method works as intended", () => {
@@ -76,15 +89,37 @@ describe("Check if the multiply method works as intended", () => {
   });
 });
 
-//Group your divide tests 
-describe('Check if the divide method works as intended', () => {
-    test('Check if it is not -10', () => {
-        expect(numberToDivide.divide() === -10).toBeFalsy();
-    })
-    test('Check if it is equal to 10', () => {
-        expect(numberToDivide.divide()).toEqual(10);
-    })
-    test('Check if it is not the same result with the numbers switched around', () => {
-        expect(numberToDivideReversed.divide() !== 10).toBeTruthy();
-    })
-})
+//Group your divide tests
+describe("Check if the divide method works as intended", () => {
+  test("Check if it is not -10", () => {
+    expect(numberToDivide.divide() === -10).toBeFalsy();
+  });
+  test("Check if it is equal to 10", () => {
+    expect(numberToDivide.divide()).toEqual(10);
+  });
+  test("Check if it is not the same result with the numbers switched around", () => {
+    expect(numberToDivideReversed.divide() !== 10).toBeTruthy();
+  });
+});
+
+//Group your remainder tests
+describe("Check if te remainder of two numbers", () => {
+  test("Check if the remainder of two numbers are not 1", () => {
+    expect(numberToGetRemainderOf.remainder() === 1).toBeFalsy();
+  });
+  test("Check if the remainder is zero", () => {
+    expect(numberToGetRemainderOf.remainder()).toEqual(0);
+  });
+  test("Test to check if the numbers are the not same way reversed", () => {
+    expect(numberToGetRemainderOfReversed.remainder() !== 0).toBeTruthy();
+  });
+});
+//Group your even and odd tests.
+describe("Check if each number is odd or even", () => {
+  test("Check if the first number is even", () => {
+    expect(numberToGetRemainderOf.getRemainder1(2)).toEqual(0);
+  });
+  test("Check if the second numebr is odd", () => {
+    expect(numberToGetRemainderOf.getRemainder2(2)).toEqual(1);
+  });
+});
