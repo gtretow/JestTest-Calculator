@@ -10,6 +10,10 @@ function Calc(firstNumber, secondNumber) {
   this.subtract = function () {
     return this.firstNumber - this.secondNumber;
   };
+
+  this.multiply = function () {
+    return this.firstNumber * this.secondNumber;
+  };
 }
 
 const numberToAdd = new Calc(5, 10);
@@ -17,6 +21,9 @@ const numberToAddReversed = new Calc(10, 5);
 
 const numberToSubtract = new Calc(5, 10);
 const numberToSubtractReversed = new Calc(10, 5);
+
+const numberToMulitply = new Calc(5, 10);
+const numberToMultiplyReversed = new Calc(10, 5);
 
 //TESTS
 describe("check if the add method works as intended", () => {
@@ -48,3 +55,16 @@ describe("check if the subtract method works as intended", () => {
     expect(numberToSubtractReversed.subtract() !== -5).toBeTruthy();
   });
 });
+
+//Groopu your multiply tests
+describe('Check if the multiply method works as intended', () => {
+    test('Check if 5 and 10 is not 5', () => {
+        expect(numberToMulitply.multiply() === 5).toBeFalsy();
+    })
+    test('Check if it is 5 * 10 are 50', () => {
+        expect(numberToMulitply.multiply()).toEqual(50);
+    })
+    test('Check if 5 and 10 equal 50 with numbers switched around', () => {
+        expect(numberToMultiplyReversed.multiply() === 50).toBeTruthy();
+    })
+})

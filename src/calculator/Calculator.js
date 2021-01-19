@@ -44,6 +44,10 @@ export default class Calculator extends Component {
       return this.setState({ num1: +num1 + +num2, num2: "", operation: "" });
     } else if (operation === "subtract") {
       return this.setState({ num1: +num1 - +num2, num2: "", operation: "" });
+    } else if (operation === "multiply") {
+      //Use a return statement to return out of the function with state.
+      //set towards num1 with num1 and num2 converted to numbers and multiplied from one another.
+      return this.setState({ num1: +num1 * +num2, num2: "", operation: "" });
     }
   }
   add() {
@@ -56,6 +60,11 @@ export default class Calculator extends Component {
   subtract() {
     //Set state of the operation to subtract so when you equal it will ad the first and second number.
     this.setState({ operation: "subtract" });
+  }
+
+  multiply() {
+    //Set the state of operation to multiply, so when you equal it will multiply first and second number.
+    this.setState({ operation: "multiply" });
   }
 
   render() {
@@ -177,6 +186,10 @@ export default class Calculator extends Component {
           </button>
           <button onClick={() => this.subtract()} className="btn">
             -
+          </button>
+
+          <button onClick={() => this.multiply()} className="btn">
+            x
           </button>
         </div>
       </div>
